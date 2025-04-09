@@ -17,7 +17,7 @@ public class CreateUser {
     @BeforeClass
     public void setup() {
         RestAssured.baseURI = baseUrl;
-        // احصل على ID لمستخدم حقيقي من القائمة
+        
         Response response = given()
                 .when()
                 .get("/users?page=1")
@@ -45,7 +45,7 @@ public class CreateUser {
                 .extract().response();
 
         userId = response.jsonPath().getString("id");
-        System.out.println("Created User ID: " + userId); // تحقق من ID
+        System.out.println("Created User ID: " + userId); //
         Assert.assertNotNull(userId, "User ID should not be null");
     }
 
@@ -54,7 +54,7 @@ public class CreateUser {
         Assert.assertNotNull(validUserId, "Valid User ID should not be null before retrieving user.");
 
         given()
-                .pathParam("id", validUserId)  // استخدام ID حقيقي من القائمة
+                .pathParam("id", validUserId)  //
                 .when()
                 .get("/users/{id}")
                 .then()
