@@ -25,7 +25,7 @@ public class CreateUser {
                 .statusCode(200)
                 .extract().response();
 
-        validUserId = response.jsonPath().getString("data[0].id"); // أخذ أول ID متاح
+        validUserId = response.jsonPath().getString("data[0].id"); 
         System.out.println("Valid User ID from List: " + validUserId);
     }
 
@@ -73,7 +73,7 @@ public class CreateUser {
                 given()
                 .contentType(ContentType.JSON)
                 .body(updatedBody)
-                .pathParam("id", validUserId)  // تحديث المستخدم الحقيقي بدلاً من userId الوهمي
+                .pathParam("id", validUserId)  
                 .when()
                 .put("/users/{id}")
                 .then()
